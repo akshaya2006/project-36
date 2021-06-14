@@ -65,11 +65,11 @@ function readStock(data){
 function feedDog(){
   dog.addImage(happyDog);
 
-  foodObj.updateFoodStock(foodObj.getFoodStock()-1);
-  database.ref('/').update({
-    Food:foodObj.getFoodStock(),
-    FeedTime:hour()
-  })
+  if(foodObj.getFoodStock()<= 0) {
+     foodObj.updateFoodStock(foodObj.getFoodStock()*0);
+     }else{ 
+       foodObj.updateFoodStock(foodObj.getFoodStock()-1); 
+     }
 }
 
 function addFoods(){
